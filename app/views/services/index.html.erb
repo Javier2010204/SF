@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Servicios</div>
+  <div class="panel-body">
+    <%= render partial: 'layouts/search_form', locals: { search_entity: 'services', word: "Servicio" } %>
+    <br>
+    <div class="col-md-5 col-md-offset-5 col-sm-5 col-sm-offset-5">
+      <p>
+        <%= button_to new_service_path, {method: :get, class: "btn btn-success"} do %>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> Nuevo Servicio
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <%= render partial: 'result_search' %>
+</div>
+

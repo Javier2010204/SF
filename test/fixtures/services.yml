@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  description: MyString
+  night_price: 9.99
+  day_price: 9.99
+
+two:
+  code: MyString
+  name: MyString
+  description: MyString
+  night_price: 9.99
+  day_price: 9.99
