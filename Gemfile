@@ -34,10 +34,13 @@ gem 'devise'
 gem 'annotate'
 gem 'bower-rails' 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'cocoon'
 gem 'aasm'
 # Modal
 gem 'bootstrap-modal-rails'
+gem 'prawn'
+gem 'prawn-table'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

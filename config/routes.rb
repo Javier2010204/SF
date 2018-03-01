@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :clients
   resources :patients
   resources :rooms
 	root to: 'dashboard#index'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
 	end
 
 	resources :items
+	resources :services
 	resources :units
 	resources :towns
 	resources :categories
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
 	put "/patients/:id/baja", to: "patients#baja"
  	put "/patients/:id/alta", to: "patients#alta"
 
+ 	put "/sales/:id/finalizar", to: "sales#finalizar"
+
 	#get 'validate_suggested_brand/index'
 	get '/brands_suggestion', to: 'brands_suggestion#index'
 	get '/validate_suggested_brand', to: 'validate_suggested_brand#index'
@@ -26,7 +30,7 @@ Rails.application.routes.draw do
 
 	#get 'validate_suggested_item/index'
 	get '/items_suggestion', to: 'items_suggestion#index'
-get '/validate_suggested_item', to: 'validate_suggested_item#index'
+	get '/validate_suggested_item', to: 'validate_suggested_item#index'
 
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

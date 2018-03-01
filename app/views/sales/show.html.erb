@@ -8,8 +8,9 @@
     		<hr>
     		<div class="row">
     			<div class="col-xs-6">
-                                        <p><strong>Nombre:</strong><%= @sale.client%></p>
-                                        <p><strong>Nit:</strong><%= @sale.nit%></p>
+                                        <p><strong>Nombre:</strong><%= @sale.patient.first_name%><%= @sale.patient.last_name%></p>
+                                        <p><strong>Nit:</strong><%= @sale.client.nit%></p>
+                                        <p><strong>Factura a nombre de:</strong><%= @sale.name%></p>
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
@@ -33,5 +34,11 @@
     	</div>
     </div>
 </div>
+<div class="container">
+    <div class="text-right">
+        <%= link_to 'Finalizar e imprimir factura', sale_path(@sale, format:"pdf"), class: 'btn btn-danger' %>
+    </div>  
+</div>
+
 
 <%= link_to 'Volver', sales_path %>

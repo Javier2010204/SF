@@ -1,67 +1,75 @@
 <nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
-    </div>
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="<%= current_page?(root_path) ? "active" : "" %>">
-          <a href="<%= root_path %>">
-            Inicio
-            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-blackboard"></span>
-          </a>
-        </li>  
-        
-        <li class="<%= current_page?(sales_path) ? "active" : "" %>">
-          <a href="<%= sales_path %>">
-            Ventas
-            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-shopping-cart"></span>
-          </a>
-        </li>   
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>      
+		</div>
+		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="<%= current_page?(root_path) ? "active" : "" %>">
+					<a href="<%= root_path %>">
+						Inicio
+						<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-blackboard"></span>
+					</a>
+				</li>  
 
-        <li class="<%= current_page?(patients_path) ? "active" : "" %>">
-          <a href="<%= patients_path %>">
-            Pacientes
-            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
-          </a>
-        </li>
-        
-        <li >
-          <a href="#">
-            Contabilidad
-            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-book"></span>
-          </a>
-        </li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Ventas
+						<span class="caret"></span>
+						<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-shopping-cart"></span>
+					</a>
+					<ul class="dropdown-menu forAnimate" role="menu">
+						<li class="<%= current_page?(sales_path) ? "active" : "" %>"><%= link_to 'Todas las ventas', sales_path %></li>
+						<li class="<%= current_page?(sales_path) ? "active" : "" %>"><%= link_to 'Finalizadas', sales_path %></li>
+						<li class="<%= current_page?(sales_path) ? "active" : "" %>"><%= link_to 'En progreso', sales_path %></li>
+						<li class="divider"></li>
+						<li><a href="#">Respaldo</a></li>
+					</ul>
+				</li>
+				
+				<li class="<%= current_page?(patients_path) ? "active" : "" %>">
+					<a href="<%= patients_path %>">
+						Pacientes
+						<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
+					</a>
+				</li>
+				
+				<li >
+					<a href="#">
+						Contabilidad
+						<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-book"></span>
+					</a>
+				</li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacén <span class="caret"></span>
-            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
-          </a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li class="<%= current_page?(items_path) ? "active" : "" %>"><%= link_to 'Medicamentos', items_path %></li>
-          </ul>
-        </li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacén <span class="caret"></span>
+						<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
+					</a>
+					<ul class="dropdown-menu forAnimate" role="menu">
+						<li class="<%= current_page?(items_path) ? "active" : "" %>"><%= link_to 'Medicamentos', items_path %></li>
+					</ul>
+				</li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Configuración
-            <span class="caret"></span>
-            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-wrench"></span>
-          </a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li class="<%= current_page?(categories_path) ? "active" : "" %>"><%= link_to 'Categorías', categories_path %></li>
-            <li class="<%= current_page?(brands_path) ? "active" : "" %>"><%= link_to 'Marcas', brands_path %></li>
-            <li class="<%= current_page?(units_path) ? "active" : "" %>"><%= link_to 'Unidades', units_path %></li>
-            <li class="divider"></li>
-            <li><a href="#">Respaldo</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Configuración
+						<span class="caret"></span>
+						<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-wrench"></span>
+					</a>
+					<ul class="dropdown-menu forAnimate" role="menu">
+						<li class="<%= current_page?(categories_path) ? "active" : "" %>"><%= link_to 'Categorías', categories_path %></li>
+						<li class="<%= current_page?(brands_path) ? "active" : "" %>"><%= link_to 'Marcas', brands_path %></li>
+						<li class="<%= current_page?(units_path) ? "active" : "" %>"><%= link_to 'Unidades', units_path %></li>
+						<li class="divider"></li>
+						<li><a href="#">Respaldo</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
 </nav>

@@ -56,10 +56,11 @@
 					<div class="col-xs-12 col-sm-10">
 						<div class="form-group row">
 							<div class="col-xs-2">
-								<%= f.label :nit, "Nit" %>
+								<%= f.label :client, "Factura a nombre de:" %>
 							</div>
 							<div class="col-xs-10">
-            							<%= f.text_field :nit, placeholder: 'numero de nit', class: 'form-control' %>
+            							<%= f.text_field :name, class: 'form-control' %>
+
          						 </div>
 						</div>
 					</div>
@@ -68,10 +69,11 @@
 					<div class="col-xs-12 col-sm-10">
 						<div class="form-group row">
 							<div class="col-xs-2">
-								<%= f.label :client, "Factura a nombre de: " %>
+								<%= f.label :nit, "Nit" %>
 							</div>
 							<div class="col-xs-10">
-            							<%= f.text_field :client, placeholder: 'nombre de la persona a facturar ', class: 'form-control' %>
+            							<%= f.text_field :client_nit, data: { autocomplete_source: clients_path }, class: 'form-control' %>
+
          						 </div>
 						</div>
 					</div>
@@ -87,7 +89,7 @@
 					</div>
 				</div>
 				<br>
-				<% message = (action_name == 'edit') ? "Volver" : "Aceptar" %>
+				<% message = (action_name == 'edit') ? "actualizar" : "Aceptar" %>
 				<%= f.submit message, class: "btn btn-success" %>
 			<% end %>
 			<div class="modal fade" id="new-detail-modal" title="Modal"></div>

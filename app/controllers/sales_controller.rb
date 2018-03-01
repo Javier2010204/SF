@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-	before_action :set_sale, only: [:show, :edit, :update, :destroy]
+	before_action :set_sale, only: [:show, :edit, :update, :destroy, :finalizar]
 	before_action :set_combo_values, only:[:new, :edit]
 
 	# GET /sales
@@ -23,13 +23,22 @@ class SalesController < ApplicationController
 	# GET /sales/1
 	# GET /sales/1.json
 	def show
+		respond_to do |format|
+			format.html
+			format.pdf do 
+				pdf = SalePdf.new(@sale, view_context)
+				send_data pdf.render, filename: "factura_#{@sale.number}.pdf", 
+												type: "application/pdf",
+												disposition: "inline"
+			end
+		end
 	end
 
 	# GET /sales/new
 	def new
 		last_sale = Sale.where(state: "confirmed", user: current_user).maximum('number')
 		number = (last_sale != nil) ? last_sale + 1 : 1
-		@sale = Sale.create(date: Date::current, number: number, state: "draft", user: current_user, patient_id: 1)
+		@sale = Sale.create(date: Date::current, number: number, state: "draft", user: current_user, patient_id: 1, client_id: 1)
 		@sale.sale_details.build
 		params[:sale_id] = @sale.id.to_s
 	end
@@ -79,6 +88,11 @@ class SalesController < ApplicationController
 		end
 	end
 
+	def finalizar
+		@sale.finished!
+		redirect_to sales_path
+	end
+
 	private
 		# Use callbacks to share common setup or constraints between actions.
 		def set_sale
@@ -91,6 +105,6 @@ class SalesController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def sale_params
-			params.require(:sale).permit(:number, :date, :state, :user_id, :patient_id, :nit, :client)
+			params.require(:sale).permit!
 		end
 end

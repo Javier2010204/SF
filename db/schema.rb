@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204160722) do
+ActiveRecord::Schema.define(version: 20180228225145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20171204160722) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "nit"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,7 +106,22 @@ ActiveRecord::Schema.define(version: 20171204160722) do
     t.bigint "patient_id"
     t.string "nit"
     t.string "client"
+    t.string "tipo_pago"
+    t.string "estado", default: "inprogress"
+    t.bigint "client_id"
+    t.string "name"
+    t.index ["client_id"], name: "index_sales_on_client_id"
     t.index ["patient_id"], name: "index_sales_on_patient_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.text "description"
+    t.decimal "day_price"
+    t.decimal "night_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "towns", force: :cascade do |t|
@@ -135,5 +158,6 @@ ActiveRecord::Schema.define(version: 20171204160722) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "units"
   add_foreign_key "patients", "rooms"
+  add_foreign_key "sales", "clients"
   add_foreign_key "sales", "patients"
 end

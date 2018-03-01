@@ -82,6 +82,17 @@ class Search
 		end
 		return patients, number_of_pages
 	end
+	
+	def services_by_name
+		if @keywords.present?
+			services = Service.where(name_condition).order(:name).offset(@offset).limit(@page_size)
+			@number_of_records = Service.where(name_condition).count
+		else
+			services = Service.order(:name).offset(@offset).limit(@page_size)
+			@number_of_records = Service.count
+		end
+		return services, number_of_pages
+	end
 
 	def sales
 		if @keywords.present?

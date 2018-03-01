@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui   
 //= require jquery_ujs
 //= require jquery-readyselector
 //= require turbolinks
@@ -20,3 +21,4 @@
 //= require bootstrap-modalmanager
 //= require 'typeahead.js.js'
 //= require_tree 
+

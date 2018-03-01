@@ -1,0 +1,1 @@
+validate_suggested_service.coffee

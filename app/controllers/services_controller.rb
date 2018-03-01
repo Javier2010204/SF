@@ -3,14 +3,14 @@ class ServicesController < ApplicationController
 
   # GET /services
   # GET /services.json
+ PAGE_SIZE = 10
+
   def index
-    def index
     @page = (params[:page] || 0).to_i
     @keywords = params[:keywords]
 
     search = Search.new(@page, PAGE_SIZE, @keywords)
     @services, @number_of_pages = search.services_by_name
-  end
   end
 
   # GET /services/1

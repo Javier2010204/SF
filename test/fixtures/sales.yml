@@ -9,6 +9,11 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  patient_id :integer
+#  nit        :string
+#  client     :string
+#  tipo_pago  :string
+#  estado     :string           default("inprogress")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
